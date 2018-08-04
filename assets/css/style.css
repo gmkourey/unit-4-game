@@ -1,0 +1,13 @@
+.player-cards {
+    float:left;
+    margin-left:20px;
+    padding:20px;
+    border: 1px solid grey;
+    text-align:center;
+}
+.player-cards:hover {
+    background-color:lightgrey;
+}
+#chosen-player, #players, #chosen-defender  {
+    overflow:hidden;
+}
