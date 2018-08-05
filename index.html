@@ -2,21 +2,68 @@
 <html lang="en-us">
 <head>
 <meta charset="UTF-8">
-<title>RPG Game</title>
+<link rel="icon" type="image/png" href="assets/images/favicon.jpg">
+<title>Teletubbies Battle!</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>RPG Game</h1>
-<h2 id="choose-player">Choose Your Player</h2>
+  <div class="overlay">
+    <div id="overlay-content"></div>
+  </div>
+<div class="container-fluid" id="header">
+    <div class="container">
+                <h1 class="navbar-brand">Teletubbies Battle!</h1>
+                    <button id="instruction-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="button">Instructions</button>
+                </div>
+                </div>
+<div class="container">
+<h2 id="choose-player">Choose Your Player</h2>             
 <div id="players"></div>
-<h2>Your Chosen Player</h2>
+<div style="display:block; width:100%; overflow:hidden;">
 <div id="chosen-player"></div>
-<h2>Current Defender</h2>
 <div id="chosen-defender"></div>
-<h2>Defenders</h2>
-<div id="defenders"></div>
 <button id="attack-button">Attack</button>
+</div>
+
+<div id="defenders"></div>
+</div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Teletubbies Battle Instructions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ol>
+              <li>Pick your player. Your options are Tinky-Winky, Dipsy, Laa-Laa, and Po. Your character 
+                  will move into the "Chosen Player" area.</li>
+              <li>The three characters you didn't pick will become the "defenders", choose your first defender. Keep in mind,
+                   you will need to fight each defender until you lose all of your health or they lose theirs!
+              </li>
+              <li>Click the attack button to start fighting your defender. Every time you attack, your attack power will
+                  increase 2x!</li>
+                <li>If the current defender looses all of their health, they will be removed and you will need to pick a new defender.
+                    Repeat the same attack process as before
+                </li>
+                <li>To win, you must defeat all of your defenders without losing all of your health. You lose if you lose all of your health before you are able to defeat
+                    all three of your defenders. Good luck!
+                </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="assets/javascript/script.js"></script>    
 </body>
 </html>
