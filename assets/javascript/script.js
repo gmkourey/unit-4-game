@@ -5,10 +5,10 @@ function Players(name, image, health, attack, cAttack) {
     this.attack = attack;
     this.cAttack = cAttack;
 }
-var player1 = new Players("Tinky-Winky", "assets/images/tinky-winky.jpg", 15, 10, 15);
-var player2 = new Players("Dipsy", "assets/images/dipsy.jpg", 120, 15, 10);
-var player3 = new Players("Laa-Laa", "assets/images/laa-laa.jpg", 110, 12, 20);
-var player4 = new Players("Po", "assets/images/Po.jpg", 130, 20, 15);
+var player1 = new Players("Bruce Willis", "assets/images/bruce-willis.jpg", 110, 5, 15);
+var player2 = new Players("The Rock", "assets/images/rock.jpg", 125, 4, 10);
+var player3 = new Players("Bruce Lee", "assets/images/bruce-lee.jpg", 110, 3, 20);
+var player4 = new Players("Jackie Chan", "assets/images/jackie-chan.jpg", 130, 2, 25);
 var arrayPlayers = [player1, player2, player3, player4];
 var playerId;
 var defenderId;
@@ -168,9 +168,9 @@ $(".player-cards").on("click", function() {
             //Append new header to defenders
             $(newHeader).appendTo('#overlay-content');
             var newButton = $('<button>');
-            newButton.text('Play Again?');
+            newButton.text('Play Again');
             newButton.attr('class', 'btn btn-primary restart');
-            newButton.attr('onclick', 'restart()');
+            newButton.attr('onclick', 'window.location.reload()');
             $(newButton).appendTo('#overlay-content');
             console.log('You won!');   
         }
@@ -187,9 +187,9 @@ $(".player-cards").on("click", function() {
             $(newHeader).appendTo('#overlay-content');
             $('.overlay').css('height', '100%');
             var newButton = $('<button>');
-            newButton.text('Play Again?');
+            newButton.text('Play Again');
             newButton.attr('class', 'btn btn-primary restart');
-            newButton.attr('onclick', 'restart()');
+            newButton.attr('onclick', 'window.location.reload()');
             $(newButton).appendTo('#overlay-content');
         
         }
