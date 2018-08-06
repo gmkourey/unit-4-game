@@ -139,6 +139,22 @@ $(".player-cards").on("click", function() {
         $('#' + playerId + ' h4:nth-child(3)').text('Health Points: ' + playerHealth);
         $('#' + defenderId + ' h4:nth-child(3)').text('Health Points: ' + defenderHealth);
         $('#' + playerId + ' h4:nth-child(4)').text('Attack Power: ' + playerAttackPower);
+        if($("#" + playerId).attr('data-health') <= 50) {
+            $("#" + playerId).css('color', 'orange');
+            $("#" + playerId).css('border-color', 'orange');
+        }
+        if($("#" + playerId).attr('data-health') <= 25) {
+            $("#" + playerId).css('color', 'red');
+            $("#" + playerId).css('border-color', 'red');
+        }
+        if($("#" + defenderId).attr('data-health') <= 50) {
+            $("#" + defenderId).css('color', 'orange');
+            $("#" + defenderId).css('border-color', 'orange');
+        }
+        if($("#" + defenderId).attr('data-health') <= 25) {
+            $("#" + defenderId).css('color', 'red');
+            $("#" + defenderId).css('border-color', 'red');
+        }
         if($("#defenders").children().length === 1) {
             $('#defenders').css('display', 'none');
         }
