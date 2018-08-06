@@ -7,15 +7,16 @@ function Players(name, image, health, attack, cAttack) {
     this.attack = attack;
     this.cAttack = cAttack;
 }
-var player1 = new Players("Bruce Willis", "assets/images/bruce-willis.jpg", 110, 5, 15);
-var player2 = new Players("The Rock", "assets/images/rock.jpg", 125, 4, 10);
-var player3 = new Players("Bruce Lee", "assets/images/bruce-lee.jpg", 110, 3, 20);
-var player4 = new Players("Jackie Chan", "assets/images/jackie-chan.jpg", 130, 2, 25);
+var player1 = new Players("Bruce Willis", "assets/images/bruce-willis.jpg", 110, 20, 15);
+var player2 = new Players("The Rock", "assets/images/rock.jpg", 125, 15, 10);
+var player3 = new Players("Bruce Lee", "assets/images/bruce-lee.jpg", 110, 18, 20);
+var player4 = new Players("Jackie Chan", "assets/images/jackie-chan.jpg", 130, 12, 25);
 var arrayPlayers = [player1, player2, player3, player4];
 var playerId;
 var defenderId;
 var playerAttackPower;
 var playerHealth;
+var playerAttackInc = 0;
 //Create players function
 function createPlayers(player, index) {
     var playerCard = $("<div>");
@@ -92,7 +93,7 @@ $(".player-cards").on("click", function() {
         $('#choose-player').css('display','none');
         $("#defenders").children().addClass('new-defenders');
         $('#defenders').css('display', 'inline-block');
-        playerAttackPower = $("#" + playerId).attr('data-attack');
+        playerAttackPower = parseInt($("#" + playerId).attr('data-attack'));
         $('.new-defenders').css('width', '250px');
         $('#chosen-defender-header').css('display', 'block');
         $('#defenders').children().css('float','none');
@@ -131,7 +132,10 @@ $(".player-cards").on("click", function() {
         //Update player health variable, defender health variable and new counter attack variable
         playerHealth -= defenderCounterAttack;
         defenderHealth -= playerAttackPower;
-        playerAttackPower *= 2;
+        if (playerAttackInc === 0) {
+            playerAttackInc = playerAttackPower;
+        }
+        playerAttackPower += playerAttackInc;
 
         $('#' + playerId + ' h4:nth-child(3)').text('Health Points: ' + playerHealth);
         $('#' + defenderId + ' h4:nth-child(3)').text('Health Points: ' + defenderHealth);
@@ -182,9 +186,9 @@ $(".player-cards").on("click", function() {
             newButton.text('Play Again');
             newButton.attr('class', 'btn btn-primary restart');
             newButton.attr('onclick', 'window.location.reload()');
-        }
-        if($('#' + playerId).attr('data-health') <= 0) {
-            $('#chosen-defender').remove()
+            $(newButton).appendTo('#overlay-content');
+    } else if($('#' + playerId).attr('data-health') <= 0) {
+        $('#chosen-defender').remove()
             $('.overlay').css('display', 'block');
             var newHeader = $('<h2>');
             //Write text for defenders
@@ -199,8 +203,25 @@ $(".player-cards").on("click", function() {
             newButton.attr('class', 'btn btn-primary restart');
             newButton.attr('onclick', 'window.location.reload()');
             $(newButton).appendTo('#overlay-content');
+    }
+        // if($('#' + playerId).attr('data-health') <= 0) {
+        //     $('#chosen-defender').remove()
+        //     $('.overlay').css('display', 'block');
+        //     var newHeader = $('<h2>');
+        //     //Write text for defenders
+        //     newHeader.text('You Lose!!');
+        //     //Add id
+        //     newHeader.attr('id', 'win-lose-header'); 
+        //     //Append new header to defenders
+        //     $(newHeader).appendTo('#overlay-content');
+        //     $('.overlay').css('height', '100%');
+        //     var newButton = $('<button>');
+        //     newButton.text('Play Again');
+        //     newButton.attr('class', 'btn btn-primary restart');
+        //     newButton.attr('onclick', 'window.location.reload()');
+        //     $(newButton).appendTo('#overlay-content');
         
-        }
+        // }
         
 
     });
