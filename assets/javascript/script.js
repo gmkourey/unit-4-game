@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 function Players(name, image, health, attack, cAttack) {
     this.name = name;
     this.image = image;
@@ -46,8 +48,6 @@ for(var i = 0; i < arrayPlayers.length; i++) {
     createPlayers(arrayPlayers[i], i);
 }
 $(".player-cards").on("click", function() {
-    console.log("I've been clicked!");
-    console.log('test')
 
     //If statment created to make sure they don't move more than one player
     if($("#chosen-player").children().length !==2) {
@@ -118,7 +118,6 @@ $(".player-cards").on("click", function() {
 });
  
     $("#attack-button").on("click", function() {
-        console.log('attack!')
         //Log players health into playerHealth
         playerHealth = $("#" + playerId).attr('data-health');
         //Log Defenders Counter Attack
@@ -133,8 +132,6 @@ $(".player-cards").on("click", function() {
         playerHealth -= defenderCounterAttack;
         defenderHealth -= playerAttackPower;
         playerAttackPower *= 2;
-        console.log("Defender Health: " + $("#" + defenderId).attr('data-health'));
-        console.log("Player Health: " + playerHealth);
 
         $('#' + playerId + ' h4:nth-child(3)').text('Health Points: ' + playerHealth);
         $('#' + defenderId + ' h4:nth-child(3)').text('Health Points: ' + defenderHealth);
@@ -161,11 +158,9 @@ $(".player-cards").on("click", function() {
         //Remove defender from playing field if they have <= 0 health
         if($("#" + defenderId).attr('data-health') <= 0) {
             $("#" + defenderId).detach();
-            console.log("choose another defender!");
             $('#attack-button').css("display", "none"); 
         }
         
-        console.log("New Player Attack Power: " + playerAttackPower);
         if($("#chosen-defender").children().length === 1 && $("#defenders").children().length === 1) {
             $('#chosen-defender').remove()
             var newHeader = $('<h2>');
@@ -187,11 +182,8 @@ $(".player-cards").on("click", function() {
             newButton.text('Play Again');
             newButton.attr('class', 'btn btn-primary restart');
             newButton.attr('onclick', 'window.location.reload()');
-            $(newButton).appendTo('#overlay-content');
-            console.log('You won!');   
         }
         if($('#' + playerId).attr('data-health') <= 0) {
-            console.log('You Lose!')  
             $('#chosen-defender').remove()
             $('.overlay').css('display', 'block');
             var newHeader = $('<h2>');
@@ -212,7 +204,7 @@ $(".player-cards").on("click", function() {
         
 
     });
-//Finis design and have color change if players are close to dying and add flashing play again button with reset functionality
+});
 
  
 
